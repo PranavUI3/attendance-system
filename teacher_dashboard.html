@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="teacher_dashboard.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="nav">
+        <a class="title" href="https://srmu.ac.in/" target="_blank">
+          <img
+            src="https://srmu.ac.in/storage/settings/srmu-lo1-050324113149.svg"
+            alt="Srmu"
+          />
+        </a>
+        <h1>Teacher Dashboard</h1>
+        <div id="clock">00:00:00</div>
+      </div>
+    </header>
+
+    <main>
+      <h2>Present: 0 / 45</h2>
+
+      <div id="studentlist">
+        <p>no attendence yet</p>
+      </div>
+
+      <br /><br />
+
+      <div class="z">
+        <button>Download Attendence</button>
+        <button id="A">Logout</button>
+      </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="teacher_dashboard.js"></script>
+  </body>
+</html>

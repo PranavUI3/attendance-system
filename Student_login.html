@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Attendence Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Student_login.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="nav">
+        <a class="title" href="https://srmu.ac.in/" target="_blank">
+          <img
+            src="https://srmu.ac.in/storage/settings/srmu-lo1-050324113149.svg"
+            alt="Srmu"
+          />
+        </a>
+        <h1>Student Attendence Form</h1>
+        <div class="login">
+          <a href="http://127.0.0.1:3000/Teachers_login.html" target="_self"
+            >Teachers Login</a
+          >
+        </div>
+        <div id="clock">00:00:00</div>
+      </div>
+    </header>
+    <main>
+      <div class="logo">
+        <img src="https://eyojan.srmu.ac.in/ps/images/Header.png" alt="SRMU" />
+      </div>
+      <div class="A">
+        <div class="input-group password-wrapp">
+          <label for="Name">Name</label>
+          <input type="text" id="Name" name="Name" autocomplete="off" />
+        </div>
+      </div>
+      <div class="A">
+        <div class="input-group password-wrapp">
+          <label for="Rollno">Rollno</label>
+          <input type="number" id="Rollno" name="Rollno" autocomplete="off" />
+        </div>
+      </div>
+      <div class="A">
+        <div class="input-group password-wrapp">
+          <label for="Erpid">Erp-id</label>
+          <input type="number" id="Erpid" name="Erpid" autocomplete="off" />
+        </div>
+      </div>
+      <div class="button">
+        <button>Submit</button>
+      </div>
+    </main>
+    <script src="Student_login.js"></script>
+  </body>
+</html>
