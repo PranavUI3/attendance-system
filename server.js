@@ -77,7 +77,3 @@ app.listen(PORT,()=>{
   console.log("server running on PORT" + PORT);
 });
 
-
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
