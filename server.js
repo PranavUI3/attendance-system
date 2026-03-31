@@ -10,6 +10,13 @@ app.get("/",(req,res)=>{
   res.send("server is running");
 });
 
+const PORT = process.env.PORT||3000;
+
+app.listen(PORT,()=>{
+  console.log("server running on PORT" + PORT);
+});
+
+
 // const db = mysql.createConnection({
 //   host: "3000",
 //   user: "root",
@@ -73,11 +80,5 @@ app.get("/attendance", (req, res) => {
     }
     res.json(result);
   });
-});
-
-const PORT = process.env.PORT||3000;
-
-app.listen(PORT,()=>{
-  console.log("server running on PORT" + PORT);
 });
 
