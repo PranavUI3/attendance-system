@@ -6,6 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/",(req,res)=>{
+  res.send("server is running");
+});
+
 // const db = mysql.createConnection({
 //   host: "3000",
 //   user: "root",
