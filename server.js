@@ -1,4 +1,3 @@
-// offline code 
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
@@ -7,11 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Railway gives PORT automatically
 const PORT = process.env.PORT || 5000;
 
-// MySQL connection (Railway env).
-const db = mysql.creatConnection({
+// ✅ MySQL connection
+const db = mysql.createConnection({
   host: process.env.MYSQLHOST,
   user: process.env.MYSQLUSER,
   password: process.env.MYSQLPASSWORD,
@@ -19,78 +17,58 @@ const db = mysql.creatConnection({
   port: process.env.MYSQLPORT
 });
 
-// ✅ MySQL connection (LOCAL)
-// const db = mysql.createConnection({
-//   host: "localhost",     // FIXED
-//   user: "root",
-//   password: "pr@123456",
-//   database: "attendance",
-// });
-
 // ✅ Connect DB
 db.connect((err) => {
   if (err) {
-    console.log("Database error:", err);
+    console.log("❌ DB Connection Failed:", err);
   } else {
-    console.log("MySQL connected");
+    console.log("✅ Connected to MySQL");
   }
 });
 
-// ✅ ROOT ROUTE (IMPORTANT)
-app.get("/", (req, res) => {
-  res.send("Server is running 🚀");
-});
-
-// ✅ ADD ATTENDANCE
-app.post("/add", (req, res) => {
-  const { name, roll, erp } = req.body;
-
-  const checkSql = "SELECT * FROM students WHERE roll = ?";
-
-  db.query(checkSql, [roll], (err, result) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).json({ message: "Server error" });
-    }
-
-    if (result.length > 0) {
-      return res.json({ message: "Attendance already marked" });
-    }
-
-    const insertSql = "INSERT INTO students (name, roll, erp) VALUES (?, ?, ?)";
-
-    db.query(insertSql, [name, roll, erp], (err) => {
-      if (err) {
-        console.log(err);
-        return res.status(500).json({ message: "Insert failed" });
-      }
-      res.json({ message: "Attendance saved" });
-    });
+// ✅ Create table if not exists
+app.get("/init", (req, res) => {
+  const sql = `
+    CREATE TABLE IF NOT EXISTS students (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(100),
+      date DATE,
+      status VARCHAR(10)
+    )
+  `;
+  db.query(sql, (err) => {
+    if (err) return res.send(err);
+    res.send("✅ Table created");
   });
 });
 
+// ✅ Add attendance
+app.post("/attendance", (req, res) => {
+  const { name, date, status } = req.body;
 
-// ✅ GET ATTENDANCE
+  const sql = "INSERT INTO students (name, date, status) VALUES (?, ?, ?)";
+  db.query(sql, [name, date, status], (err) => {
+    if (err) return res.send(err);
+    res.send("✅ Attendance Added");
+  });
+});
+
+// ✅ Get attendance
 app.get("/attendance", (req, res) => {
-  const sql = "SELECT * FROM students ORDER BY id DESC"; // FIXED
+  const sql = "SELECT * FROM students";
 
   db.query(sql, (err, result) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).json({ message: "Error fetching data" });
-    }
+    if (err) return res.send(err);
     res.json(result);
   });
 });
 
+// ✅ Default route
+app.get("/", (req, res) => {
+  res.send("🚀 Backend is running");
+});
 
-// ✅ START SERVER (LOCAL + DEPLOY READY)
-// const PORT = process.env.PORT || 3000;
-
-app.get("/",(req,res)=>{
-  res.send("backend is running");
-})
-
+// ✅ Start server
 app.listen(PORT, () => {
-  console.log("Server running on port " + PORT);
+  console.log(🔥 Server running on port ${PORT});
 });
