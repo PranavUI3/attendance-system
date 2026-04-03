@@ -7,13 +7,25 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ MySQL connection (LOCAL)
-const db = mysql.createConnection({
-  host: "localhost",     // FIXED
-  user: "root",
-  password: "pr@123456",
-  database: "attendance",
+// Railway gives PORT automatically
+const PORT = process.env.PORT || 8080;
+
+// MySQL connection (Railway env).
+const db = mysql.creatConnection({
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT
 });
+
+// ✅ MySQL connection (LOCAL)
+// const db = mysql.createConnection({
+//   host: "localhost",     // FIXED
+//   user: "root",
+//   password: "pr@123456",
+//   database: "attendance",
+// });
 
 // ✅ Connect DB
 db.connect((err) => {
@@ -28,7 +40,6 @@ db.connect((err) => {
 app.get("/", (req, res) => {
   res.send("Server is running 🚀");
 });
-
 
 // ✅ ADD ATTENDANCE
 app.post("/add", (req, res) => {
@@ -74,7 +85,11 @@ app.get("/attendance", (req, res) => {
 
 
 // ✅ START SERVER (LOCAL + DEPLOY READY)
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
+
+app.get("/",(req,res)=>{
+  res.send("backend is running");
+})
 
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
