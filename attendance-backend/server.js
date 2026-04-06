@@ -9,11 +9,19 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ MySQL connection (LOCAL)
+// const db = mysql.createConnection({
+//   host: "localhost",     // FIXED
+//   user: "root",
+//   password: "pr@123456",
+//   database: "attendance",
+// });
+
 const db = mysql.createConnection({
-  host: "localhost",     // FIXED
-  user: "root",
-  password: "pr@123456",
-  database: "attendance",
+  host: process.env.MYSQLHOST || "localhost",
+  user: process.env.MYSQLUSER || "root",
+  password: process.env.MYSQLPASSWORD || "pr@123456",
+  database: process.env.MYSQLDATABASE || "attendance",
+  port: process.env.MYSQLPORT || 3306,
 });
 
 // ✅ Connect DB
