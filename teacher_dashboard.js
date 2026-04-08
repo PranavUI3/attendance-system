@@ -5,7 +5,8 @@ let students = [];
 
 async function loadAttendance() {
   try {
-    const response = await fetch("http://localhost:3000/attendance");
+    // const response = await fetch("http://localhost:3000/attendance");
+    const response = await fetch("attendance-system-production-1bc7.up.railway.app");
     const data = await response.json();
 
     students = data;
