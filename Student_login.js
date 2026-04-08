@@ -84,7 +84,7 @@ submitbtn.addEventListener("click", async (e) => {
   submitbtn.disabled = true;
 
   try {
-    const response = await fetch("attendance-system-production-1bc7.up.railway.app", {
+    const response = await fetch("http://localhoast:3000/api", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
