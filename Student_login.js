@@ -1,21 +1,19 @@
-console.log("test");
-
 const BASE_URL = "https://attendance-system-production-1bc7.up.railway.app";
 
 // selecting elements
 const nameInput = document.getElementById("Name");
 const rollnoInput = document.getElementById("Rollno");
 const erpidInput = document.getElementById("Erpid");
-const submitbtn = document.getElementById("submitbtn"); // Fixed ID match
+const submitbtn = document.getElementById("submitbtn");
 
-// Error handling
+
+// ✅ Error handling
 function showError(input, message) {
   let error = input.parentElement.querySelector(".error");
   if (!error) {
     error = document.createElement("small");
     error.className = "error";
     error.style.color = "red";
-    error.style.marginTop = "10px";
     input.parentElement.appendChild(error);
   }
   error.textContent = message;
@@ -26,10 +24,10 @@ function clearError(input) {
   if (error) error.remove();
 }
 
-// Validation functions
+
+// ✅ Validation
 function validationName(name) {
-  const nameRule = /^[A-Z][A-Za-z\s]{1,29}$/;
-  return !!name && nameRule.test(name);
+  return /^[A-Z][A-Za-z\s]{1,29}$/.test(name);
 }
 
 function validationRollno(rollno) {
@@ -40,7 +38,8 @@ function validationErpid(erpid) {
   return erpid >= 10000 && erpid <= 100000;
 }
 
-// Single submit handler
+
+// ✅ Submit
 submitbtn.addEventListener("click", async (e) => {
   e.preventDefault();
 
@@ -48,85 +47,68 @@ submitbtn.addEventListener("click", async (e) => {
   const roll = Number(rollnoInput.value);
   const erp = Number(erpidInput.value);
 
-  // Empty check
-  if (!name || !rollnoInput.value.trim() || !erpidInput.value.trim()) {
+  if (!name || !rollnoInput.value || !erpidInput.value) {
     alert("Please enter all details!");
     return;
   }
 
   let valid = true;
 
-  // Validate all fields
   if (!validationName(name)) {
-    showError(
-      nameInput,
-      "Name: Start with capital, letters only (max 30 chars)",
-    );
+    showError(nameInput, "Name must start with capital");
     valid = false;
-  } else {
-    clearError(nameInput);
-  }
+  } else clearError(nameInput);
 
   if (!validationRollno(roll)) {
-    showError(rollnoInput, "Invalid roll number format");
+    showError(rollnoInput, "Invalid roll number");
     valid = false;
-  } else {
-    clearError(rollnoInput);
-  }
+  } else clearError(rollnoInput);
 
   if (!validationErpid(erp)) {
-    showError(erpidInput, "ERP ID must be 10000-50000");
+    showError(erpidInput, "ERP must be 10000–100000");
     valid = false;
-  } else {
-    clearError(erpidInput);
-  }
+  } else clearError(erpidInput);
 
   if (!valid) return;
 
-  // Disable button during submission
   submitbtn.textContent = "Submitting...";
   submitbtn.disabled = true;
 
   try {
-    // const response = await fetch("http://localhost:3000/add", {
     const response = await fetch(`${BASE_URL}/add`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        roll: roll.toString(),
-        erp: erp.toString(),
-      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, roll, erp }),
     });
 
     const data = await response.json();
 
     if (response.ok) {
       alert(data.message);
-      // Reset form
-      nameInput.value = rollnoInput.value = erpidInput.value = "";
+      nameInput.value = "";
+      rollnoInput.value = "";
+      erpidInput.value = "";
     } else {
       alert(data.message || "Submission failed");
     }
-  } catch (error) {
-    alert("Network error. Is server running on port 3000?");
-    console.error(error);
+  } catch (err) {
+    console.error(err);
+    alert("Server error");
   } finally {
     submitbtn.textContent = "Submit";
     submitbtn.disabled = false;
   }
 });
 
-// Clock (unchanged)
+
+// ✅ CLOCK
 function updateClock() {
   const now = new Date();
-  const timeString = now.toLocaleTimeString("en-US", {
-    hour12: false,
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
-  document.getElementById("clock").textContent = timeString;
+  document.getElementById("clock").textContent =
+    now.toLocaleTimeString("en-US", { hour12: false });
 }
+
 updateClock();
 setInterval(updateClock, 1000);
