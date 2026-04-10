@@ -7,14 +7,13 @@ let students = [];
 
 async function loadAttendance() {
   try {
-    const response = await fetch("http://localhost:3000/attendance");
-    // const response = await fetch("https://attendance-system-production-1bc7.up.railway.app/");
+    const response = await fetch(`${BASE_URL}/attendance`);
+    // const response = await fetch("http://localhost:3000/attendance");
     const data = await response.json();
 
     students = data;
 
     list.innerHTML = "";
-
     totalText.innerHTML = `Present:${students.length} / 60`;
 
     students.forEach((student) => {
