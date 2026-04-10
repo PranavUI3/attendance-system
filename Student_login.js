@@ -1,3 +1,5 @@
+console.log("test");
+
 const BASE_URL = "https://attendance-system-production-1bc7.up.railway.app";
 
 // selecting elements
