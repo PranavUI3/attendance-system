@@ -1,3 +1,5 @@
+const BASE_URL = "https://attendance-system-production-1bc7.up.railway.app";
+
 // selecting elements
 const nameInput = document.getElementById("Name");
 const rollnoInput = document.getElementById("Rollno");
@@ -84,7 +86,8 @@ submitbtn.addEventListener("click", async (e) => {
   submitbtn.disabled = true;
 
   try {
-    const response = await fetch("http://localhost:3000/add", {
+    // const response = await fetch("http://localhost:3000/add", {
+    const response = await fetch(`${BASE_URL}/add`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
