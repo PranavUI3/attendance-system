@@ -36,22 +36,6 @@ async function loadAttendance() {
 loadAttendance();
 
 
-// ✅ CSV DOWNLOAD BUTTON
-document.getElementById("csvBtn").addEventListener("click", () => {
-  let csv = "Name,Roll,Erpid\n";
-
-  students.forEach((s) => {
-    csv += `${s.name},${s.roll},${s.erp}\n`;
-  });
-
-  const blob = new Blob([csv], { type: "text/csv" });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "attendance.csv";
-  a.click();
-});
 
 
 // ✅ PDF DOWNLOAD BUTTON
