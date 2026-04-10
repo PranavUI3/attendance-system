@@ -8,39 +8,39 @@ let students = [];
 async function loadAttendance() {
   try {
     const response = await fetch(`${BASE_URL}/attendance`);
-    // const response = await fetch("http://localhost:3000/attendance");
     const data = await response.json();
 
     students = data;
 
     list.innerHTML = "";
-    totalText.innerHTML = `Present:${students.length} / 60`;
+    totalText.innerHTML = `Present: ${students.length} / 60`;
 
     students.forEach((student) => {
       const card = document.createElement("div");
       card.className = "box";
 
       card.innerHTML = `
-      <p>Name: ${student.name}</p>
-      <p>Rollno: ${student.roll}</p>
-      <p>Erpid: ${student.erp}</p>`
+        <p>Name: ${student.name}</p>
+        <p>Rollno: ${student.roll}</p>
+        <p>Erpid: ${student.erp}</p>
+      `;
+
       list.appendChild(card);
     });
   } catch (err) {
     console.error(err);
-    list.innerHTML = "<p>server error</p>";
+    list.innerHTML = "<p>Server error</p>";
   }
 }
 
 loadAttendance();
 
-// download button
 
-// Exel
-document.querySelector("button").addEventListener("click", () => {
-
+// ✅ CSV DOWNLOAD BUTTON
+document.getElementById("csvBtn").addEventListener("click", () => {
   let csv = "Name,Roll,Erpid\n";
-  students.forEach(s => {
+
+  students.forEach((s) => {
     csv += `${s.name},${s.roll},${s.erp}\n`;
   });
 
@@ -53,12 +53,13 @@ document.querySelector("button").addEventListener("click", () => {
   a.click();
 });
 
-//Pdf
-document.querySelector("button").addEventListener("click", () => {
+
+// ✅ PDF DOWNLOAD BUTTON
+document.getElementById("pdfBtn").addEventListener("click", () => {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  doc.text("Attendence Report", 15, 20);
+  doc.text("Attendance Report", 15, 20);
 
   doc.autoTable({
     head: [["Name", "Rollno", "Erpid"]],
@@ -68,22 +69,21 @@ document.querySelector("button").addEventListener("click", () => {
   doc.save("attendance.pdf");
 });
 
+
+// ✅ LOGOUT
 const logout = document.getElementById("A");
 logout.addEventListener("click", () => {
   alert("Have a great day!");
 });
 
-// clock
+
+// ✅ CLOCK
 function updateClock() {
   const now = new Date();
 
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-  let seconds = now.getSeconds();
-
-  hours = hours < 10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
+  let hours = String(now.getHours()).padStart(2, "0");
+  let minutes = String(now.getMinutes()).padStart(2, "0");
+  let seconds = String(now.getSeconds()).padStart(2, "0");
 
   document.getElementById("clock").textContent =
     `${hours}:${minutes}:${seconds}`;
@@ -91,5 +91,3 @@ function updateClock() {
 
 updateClock();
 setInterval(updateClock, 1000);
-
-
