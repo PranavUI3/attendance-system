@@ -1,3 +1,5 @@
+const BASE_URL = "https://attendance-system-production-1bc7.up.railway.app";
+
 const list = document.getElementById("studentlist");
 const totalText = document.querySelector("h2");
 
