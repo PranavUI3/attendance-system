@@ -37,6 +37,9 @@ app.get("/", (req, res) => {
 
 // ✅ ADD ATTENDANCE
 app.post("/add", (req, res) => {
+
+  console.log("BODY:", req.body); // new added
+  
   try {
     const { name, roll, erp } = req.body;
 
