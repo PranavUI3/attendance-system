@@ -101,7 +101,7 @@ signBtn.addEventListener("click", (e) => {
     setTimeout(() => {
       alert("Login Successful ✅");
       signBtn.textContent = "Signin";
-      window.location.href = "http://127.0.0.1:3000/teacher_dashboard.html";
+      window.location.href = "https://pranavui3.github.io/attendance-system/teacher_dashboard.html";
       signBtn.disabled = false;
     }, 1200);
   }
