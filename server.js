@@ -93,6 +93,20 @@ app.get("/attendance", (req, res) => {
   });
 });
 
+// Delete Attendance
+app.delete("/delete/:roll", (req, res)=>{
+  const {roll} = req.params;
+
+  const sql = "DELETE FROM students WHERE roll = ?";
+
+  db.query(sql, [roll], (err, result)=>{
+    if(err){
+      console.log(err);
+      return res.status(500).json({ message: "Delete failed"});
+    }
+    res.json({ message: "Student removed"});
+  });
+});
 
 // ✅ START SERVER
 const PORT = process.env.PORT || 3000;
