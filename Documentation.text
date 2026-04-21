@@ -48,7 +48,6 @@ This project introduces a OR-Based Attendance System where:
 * Hosting: Railway
 
 
-
 7) Problems Faced During the Project:-
 
 a) QR Code Generation Issues:
@@ -78,10 +77,32 @@ e) Hosting & Testing:-
 * Delay in deployment process.
 * Testing on live server vs local environment caused differences.
 
-
 "These challenges helped inprove problem-solving skills and provided practical experience in full-stack development."
 
 
-7) Conclusion:-
+7) Changes in project in future:-
+* Dynamic Qr code
+* Time based attendance
+* Location Verification or College Network for Attendance
+* Login system
+* Real-time Dashbor
+* Face Recognition
+* Leave Management
+* Data Science in this project 
+  # Attendance Analytics 
+  # Defaulter Student Detection
+  # Predicition
+  # Smart Reports and graph
+  # Behaviour Pattern
+  # Realtime Dashboard
+  # Face Recognition
+
+
+9) Also in future we will convert the student detail page into a samll portfolio of sutudent.
+  * on click on a student box it will show there performance in class there marks and their skills and project.
+  * With data science we will predict the performance of the class in the upcoming exam.
+
+
+10) Conclusion:-
 The QR-based attendance system provides a fast, secure, and efficient way of managing attendance and reduces the limitations 
 of traditinoal methods.
