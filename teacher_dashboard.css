@@ -1,15 +1,20 @@
+/* RESET */
 * {
   padding: 0;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
+  transition: all 0.3s ease;
 }
 
+/* HEADER */
 header {
-  background-color: rgba(15, 75, 135, 1);
+  background: linear-gradient(135deg, #1f4037, #99f2c8);
   height: 10vh;
   width: 100%;
+  animation: slideDown 0.6s ease;
 }
 
+/* NAV */
 .nav {
   display: flex;
   align-items: center;
@@ -20,57 +25,80 @@ header {
   height: 45px;
   width: 230px;
   padding: 10px 0px;
+  transition: transform 0.3s;
+}
+
+.title img:hover {
+  transform: scale(1.08);
 }
 
 .nav h1 {
   color: #ffffff;
+  letter-spacing: 1px;
 }
 
+/* CLOCK */
 #clock {
   color: #ffffff;
   padding: 0px 25px;
   font-size: x-large;
   letter-spacing: 5px;
+  animation: pulse 2s infinite;
 }
 
+/* MAIN */
 main {
-  background-color: #f4f6f8;
+  background: linear-gradient(135deg, #dbeafe, #93c5fd);
   padding: 25px;
-  min-height: 70vh;
+  min-height: 90vh;
+  animation: fadeIn 1s ease;
 }
 
+/* TITLE */
 h2 {
   text-align: center;
-  color: green;
-  font-size: 30px;
+  color: #2c7a7b;
+  font-size: 32px;
 }
 
+/* STUDENT LIST */
 #studentlist {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 15px;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-.box {
-  padding-top: 35px;
-  padding-left: 35px;
-  display: flex;
-  height: 75px;
-  width: 600px;
-  border: 1px solid white;
-  border-radius: 25px;
-  color: white;
-  background-color: #212121;
-  align-content:center ;
-  text-align:center ;
   gap: 20px;
+  padding: 20px;
 }
 
+/* CARD (BOX) */
+.box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  width: 600px;
+  height: 80px;
+  padding: 20px;
+
+  border-radius: 18px;
+  color: #fff;
+
+  background: linear-gradient(135deg, #232526, #414345);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+  transform: translateY(30px);
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+/* HOVER CARD EFFECT */
+.box:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* TEXT ALIGN */
 .z {
   display: flex;
   flex-direction: column;
@@ -78,37 +106,77 @@ h2 {
   align-items: center;
 }
 
+/* BUTTONS */
 button {
-  border-radius: 5px;
+  border-radius: 8px;
   border: none;
-  width: 250px;
-  height: 30px;
-  padding: 5px 15px;
+  width: 200px;
+  height: 35px;
   margin: 10px 5px;
+
   cursor: pointer;
-  background-color: rgb(200, 50, 50);
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
   color: #ffffff;
   font-size: 14px;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+/* ATTENDANCE BUTTON */
 #A {
-  background-color: rgb(25, 105, 185);
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
 }
 
+/* BUTTON HOVER */
 button:hover {
-  padding: 5px 30px;
-  border: 2px solid #313131;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
+/* BUTTON CLICK */
+button:active {
+  transform: scale(0.95);
+}
+
+/* REMOVE BUTTON */
 .remove-btn {
-  background-color: crimson;
-  width: 150px;
-  color: white;
-  border: none;
-  padding: 2.5px;
-  margin-top: -4px;
-  cursor: pointer;
+  background: crimson;
+  width: 120px;
   margin-left: auto;
-  margin-right: 15px;
 }
 
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
