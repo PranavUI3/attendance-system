@@ -1,53 +1,81 @@
+
+/* RESET */
 * {
   padding: 0;
   margin: 0;
   font-family: "Inter", sans-serif;
+  transition: all 0.3s ease;
 }
 
+/* BODY */
+body {
+  background: linear-gradient(135deg, rgb(3, 47, 83), #0f4c81);
+  overflow-x: hidden;
+}
+
+/* HEADER */
 header {
   width: 100%;
   height: 10vh;
   background-color: rgba(15, 75, 135, 1);
+  animation: slideDown 0.6s ease;
 }
 
-main {
-  min-height: 80%;
-}
-
+/* NAV */
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+/* LOGO (NAV) */
 .title img {
   height: 45px;
   width: 230px;
   padding: 10px 0px;
+  transition: transform 0.3s ease;
 }
 
+.title img:hover {
+  transform: scale(1.08) rotate(2deg);
+}
+
+/* TITLE */
 h1 {
   color: #ffffff;
+  letter-spacing: 1px;
 }
 
+/* LOGIN LINK */
 .login a {
   color: #ffffff;
   text-decoration: none;
   font-size: larger;
+  padding: 5px 10px;
+  border-radius: 6px;
 }
 
+.login a:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+/* CLOCK */
 #clock {
   color: #ffffff;
   padding: 0px 25px;
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 5px;
+  animation: pulse 2s infinite;
 }
 
-body {
-  background-color: rgb(3 47 83);
+/* MAIN */
+main {
+  min-height: 80%;
+  animation: fadeIn 1s ease;
 }
 
+/* LOGO CENTER */
 .logo {
   margin: 30px 20px;
   display: flex;
@@ -58,15 +86,26 @@ body {
 .logo img {
   height: 220px;
   width: 230px;
+  animation: float 4s ease-in-out infinite;
 }
 
+/* INPUT GROUP */
 .input-group {
   display: flex;
   flex-direction: column;
   width: 350px;
   margin: 15px auto;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
 }
 
+/* STAGGER EFFECT */
+.input-group:nth-child(1) { animation-delay: 0.2s; }
+.input-group:nth-child(2) { animation-delay: 0.4s; }
+.input-group:nth-child(3) { animation-delay: 0.6s; }
+
+/* LABEL */
 .input-group label {
   color: #ffffff;
   text-align: left;
@@ -76,6 +115,7 @@ body {
   margin-bottom: 5px;
 }
 
+/* INPUT */
 #Name,
 #Rollno,
 #Erpid {
@@ -85,18 +125,30 @@ body {
   width: 350px;
   height: 50px;
   background-color: #ffffff;
-  border-radius: 0.25rem;
+  border-radius: 0.4rem;
   box-shadow: 10px 10px 5px #121212;
   border: none;
+  padding-left: 10px;
 }
 
+/* INPUT HOVER */
+#Name:hover,
+#Rollno:hover,
+#Erpid:hover {
+  transform: scale(1.03);
+}
+
+/* INPUT FOCUS */
 #Name:focus,
 #Rollno:focus,
 #Erpid:focus {
   border: 2px solid orange;
   outline: none;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px orange;
 }
 
+/* BUTTON */
 .button {
   padding-top: 30px;
   display: flex;
@@ -106,35 +158,69 @@ body {
 
 button {
   color: #121212;
-  background-color: #79cc9c;
-  padding: 0.3rem 1rem 0.3rem 1rem;
+  background: linear-gradient(135deg, #79cc9c, #4caf7a);
+  padding: 0.3rem 1rem;
   border-radius: 5px;
   width: 125px;
   height: 35px;
   font-weight: bold;
   font-size: 1.2rem;
-  border: 1px inset transparent;
+  border: none;
   box-shadow: 10px 10px 5px #121212;
   text-shadow: 0px 1px 0px #bde6cf;
 }
 
+/* BUTTON HOVER */
 button:hover {
   cursor: pointer;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 25px #000;
 }
 
+/* BUTTON CLICK */
+button:active {
+  transform: scale(0.95);
+}
+
+/* BUTTON FOCUS */
 button:focus {
   border: 2.5px solid orange;
 }
 
+/* REMOVE NUMBER ARROWS */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  appearance: none;
   margin: 0;
 }
 
-
-input[type="number"] {
+/* input[type="number"] {
   -moz-appearance: textfield;
-  appearance: textfield;
+} */
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
