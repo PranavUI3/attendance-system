@@ -1,277 +1,156 @@
+/* GLOBAL SMOOTHNESS */
 * {
-  padding: 0;
-  margin: 0;
-  font-family: "Inter", sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-header {
-  width: 100%;
-  height: 10vh;
-  background-color: rgba(15, 75, 135, 1);
-}
-
-main {
-  min-height: 80%;
-}
-
+/* NAVBAR ENTRY ANIMATION */
 .nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  animation: slideDown 0.8s ease;
 }
 
-.title img {
-  height: 45px;
-  width: 230px;
-  padding: 10px 0px;
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-h1 {
-  color: #ffffff;
-}
-
-.login a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: larger;
-}
-
-#clock {
-  color: #ffffff;
-  padding: 0px 25px;
-  font-size: x-large;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 5px;
-}
-
-body {
-  /* background-color: rgb(35, 85, 125); */
-  background-color: rgb(3 47 83);
-}
-
-.logo {
-  margin: 30px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* LOGO ENHANCED FLOAT + GLOW */
 .logo img {
-  height: 220px;
-  width: 230px;
+  animation: floatGlow 4s ease-in-out infinite;
 }
 
+@keyframes floatGlow {
+  0% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 0px #06b6d4);
+  }
+  50% {
+    transform: translateY(-12px);
+    filter: drop-shadow(0 0 15px #06b6d4);
+  }
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 0px #06b6d4);
+  }
+}
+
+/* INPUT APPEAR STAGGER EFFECT */
+.A {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.A:nth-child(2) { animation-delay: 0.2s; }
+.A:nth-child(3) { animation-delay: 0.4s; }
+.A:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* INPUT ADVANCED EFFECT */
+input {
+  position: relative;
+  overflow: hidden;
+}
+
+/* INPUT HOVER */
+input:hover {
+  transform: scale(1.03);
+}
+
+/* INPUT FOCUS PREMIUM */
+input:focus {
+  transform: scale(1.07);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 0 10px rgba(59, 130, 246, 0.6),
+    0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+/* LABEL FLOAT EFFECT */
 .input-group {
-  display: flex;
-  flex-direction: column;
-  width: 350px;
-  margin: 15px auto;
+  position: relative;
 }
 
 .input-group label {
-  color: #ffffff;
-  text-align: left;
-  text-shadow: 2px 2px 1px #121212;
-  font-size: large;
-  font-weight: 500;
-  margin-bottom: 5px;
+  transition: 0.3s;
 }
 
-#Name,
-#Rollno,
-#Erpid {
-  color: #121212;
-  font-weight: bolder;
-  font-size: 17px;
-  width: 350px;
-  height: 50px;
-  background-color: #ffffff;
-  border-radius: 0.25rem;
-  box-shadow: 10px 10px 5px #121212;
-  border: none;
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  transform: translateY(-18px);
+  font-size: 12px;
+  opacity: 0.7;
 }
 
-#Name:focus,
-#Rollno:focus,
-#Erpid:focus {
-  border: 2px solid orange;
-  outline: none;
-}
-
-.button {
-  padding-top: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* BUTTON PREMIUM ANIMATION */
 button {
-  color: #121212;
-  background-color: #79cc9c;
-  padding: 0.3rem 1rem 0.3rem 1rem;
-  border-radius: 5px;
-  width: 125px;
-  height: 35px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  border: 1px inset transparent;
-  box-shadow: 10px 10px 5px #121212;
-  text-shadow: 0px 1px 0px #bde6cf;
+  position: relative;
+  overflow: hidden;
 }
 
+/* BUTTON HOVER */
 button:hover {
-  cursor: pointer;
+  transform: translateY(-5px) scale(1.07);
 }
 
-button:focus {
-  border: 2.5px solid orange;
+/* BUTTON CLICK RIPPLE */
+button:active {
+  transform: scale(0.95);
 }
 
-/* Chrome, Safari, Edge, Opera */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  appearance: none;
-  margin: 0;
+/* BUTTON GLOW ANIMATION */
+button::before {
+  content: "";
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10%);
+  top: -100%;
+  left: -100%;
+  opacity: 0;
+  transition: 0.5s;
 }
 
-/* Firefox (and others) */
-input[type="number"] {
-  -moz-appearance: textfield;
-  appearance: textfield;
+button:hover::before {
+  opacity: 1;
+  top: -50%;
+  left: -50%;
 }
 
-/* Mobile (up to 480px) */
-@media (max-width: 480px) {
-  header {
-    height: 8vh;
-  }
-
-  .nav {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .title img {
-    height: 35px;
-    width: 180px;
-    padding: 5px 0;
-  }
-
-  #clock {
-    font-size: large;
-    letter-spacing: 2px;
-    padding: 0 10px;
-  }
-
-  .logo {
-    margin: 20px 10px;
-  }
-
-  .logo img {
-    height: 160px;
-    width: 170px;
-  }
-
-  .input-group {
-    width: 95vw;
-    max-width: 350px;
-    padding: 0 10px;
-  }
-
-  #Name,
-  #Rollno,
-  #Erpid {
-    width: 100%;
-    height: 45px;
-    font-size: 16px;
-  }
-
-  button {
-    width: 120px;
-    height: 35px;
-    font-size: 1rem;
-  }
+/* CLOCK PULSE */
+#clock {
+  animation: pulse 2s infinite;
 }
 
-/* Tablet (481px to 1024px) */
-@media (min-width: 481px) and (max-width: 1024px) {
-  header {
-    padding: 0 15px;
-  }
-
-  .nav {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .title img {
-    height: 40px;
-    width: 200px;
-  }
-
-  #clock {
-    letter-spacing: 4px;
-  }
-
-  .logo {
-    margin: 25px 15px;
-  }
-
-  .logo img {
-    height: 200px;
-    width: 210px;
-  }
-
-  .input-group {
-    width: 400px;
-  }
-
-  #Name,
-  #Rollno,
-  #Erpid {
-    width: 400px;
-    height: 48px;
-  }
-
-  button {
-    width: 140px;
-  }
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
 }
 
-/* Laptop/Desktop (1025px+) */
-@media (width: 100%) {
-  header,
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+/* PAGE LOAD SMOOTH */
+main {
+  animation: mainFade 1s ease;
+}
 
-  .nav {
-    padding: 0 20px;
+@keyframes mainFade {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
-
-  .logo {
-    margin: 40px 30px;
-  }
-
-  .logo img {
-    height: 230px;
-    width: 250px;
-  }
-
-  .input-group {
-    width: 400px;
-  }
-
-  button {
-    width: 140px;
-    transition: all 0.3s ease;
-  }
-
-  button:hover {
-    transform: translateY(-2px);
-    box-shadow: 12px 12px 8px #121212;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
