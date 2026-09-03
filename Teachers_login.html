@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Login page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Teachers_login.css" />
+  </head>
+
+  <body>
+    <main>
+      <div class="logo">
+        <img src="https://eyojan.srmu.ac.in/ps/images/Header.png" alt="SRMU" />
+      </div>
+
+      <div class="A">
+        <div class="input-group">
+          <label for="userid">User id</label>
+          <input type="text" id="userid" name="userid" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="A">
+        <div class="input-group">
+          <label for="password">Password</label>
+
+          <div class="password-wrapp">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="off"
+            />
+            <span id="togglePassword">👁</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="A">
+        <div class="input-group">
+          <label for="SelectaLanguage">Select a Language</label>
+          <select name="select" id="select">
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="button">
+        <button>Signin</button>
+      </div>
+    </main>
+
+    <script src="Teachers_login.js"></script>
+  </body>
+</html>

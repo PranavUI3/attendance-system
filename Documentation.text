@@ -1,0 +1,87 @@
+1) Problem Statement:-
+Traditinoal attendance systems have several issues:
+* Manual attendance is time-consuming.
+* Chances of proxy attendance(fake marking).
+* Difficult to manage records for large classes.
+* Data is not stored efficiently.
+* Requires physical presence of teacher for marking. 
+
+
+2) Proposed Solution:-
+This project introduces a OR-Based Attendance System where:
+* Each session generates a unique QR code.
+* Students scan the QR to mark attendance.
+* Data is stored automatically in the database.
+* Teacher can view attendance anytime at teacher dashboard.
+
+
+3) Advantages of the Project:-
+* Saves Time - Attendance marked in seconds.
+* Reduces Proxy - QR changes dynamically, harder to cheat.
+* Automation - No manual entry required.
+* Real-time Data - Attendance stored instantly.
+* Easy Record Management - Data stored in database.
+* Accessible Anywhere - Can be used via web/mobile.
+* Paperless System - Environment friendly.
+
+
+4) Problems Solved:-
+* Eliminates manual attendance errors.
+* Prevents fake/proxy attendance.
+* Reduces workload of teachers.
+* Avoids data loss (stored digitally).
+* Speeds up attendance process.
+
+
+5) Scope of the Project:-
+* Can be used in schools, colleges, offices.
+* Can be extended with:
+  # Face recognition
+  # GPS tracking
+  # Attendance analytics dashboard
+
+
+6) Techologies Used:-
+* Frontend: HTML, CSS, JavaScript.
+* Backend: Node.js/Express.
+* Database: MySQL.
+* Hosting: Railway
+
+
+
+7) Problems Faced During the Project:-
+
+a) QR Code Generation Issues:
+* Difficulty in generating unique QR codes for each session.
+* Handling expiration of QR codes to prevent misuse.
+
+
+b) Backend Deployment Problems:
+* Faced issues while deploying Backend on platforms like Railway.
+* Errors like "error fetching data" after deployment.
+* Difficulty in configuring environment variables(MYSQLHOST, MYSQLUSER, etc).
+
+
+c) Database Connectivity:
+* Trouble connecting backend with MySQL database.
+* Errors due to incorrect credentials or port configuration.
+* Data not storing properly initially.
+
+
+d) Frontend-Backend Integration:
+* API calls were not working properly at first.
+* Difficulty in sending and receiving correct data.
+* CORS issues during connection.
+
+
+e) Hosting & Testing:-
+* Delay in deployment process.
+* Testing on live server vs local environment caused differences.
+
+
+"These challenges helped inprove problem-solving skills and provided practical experience in full-stack development."
+
+
+7) Conclusion:-
+The QR-based attendance system provides a fast, secure, and efficient way of managing attendance and reduces the limitations 
+of traditinoal methods.
